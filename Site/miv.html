@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KP Design | Portfolio Minimalista</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <link rel="stylesheet" type="text/css" href="css/style1.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --cobalto: #0047AB;
+            --preto: #050505;
+            --branco: #ffffff;
+        }
+
+        body {
+            ;
+            background: linear-gradient(0deg, #000a14, #051928) ;
+            color: var(--branco);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            font-family: 'Nunito' sans-serif;
+            padding-top: 0px;
+        }
+
+        /* Tipografia Vazada - Ajustada para não cortar */
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.08);
+            font-size: 14vw; 
+        }
+
+        .glass {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Estilos do Carrossel - Transição Fluida e Melhorada */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            background: var(--branco); /* Fundo branco para evitar flashes pretos */
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1;
+            /* Efeito de escala mais suave */
+            transform: scale(1.08);
+            filter: blur(8px);
+            transition: 
+                opacity 0.6s ease-in-out,
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+                filter 0.6s ease;
+            cursor: pointer;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 2; /* Sempre por cima durante a troca */
+            transform: scale(1);
+            filter: blur(0px);
+        }
+
+        .slide img {
+            transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+            width: 100%;
+            height: 100%;
+            object-cover: cover;
+        }
+
+        .slide:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Legendas do Slide */
+        .slide-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.3s;
+        }
+
+        .slide.active .slide-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Indicadores (Dots) */
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #cbd5e1;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .dot.active {
+            width: 30px;
+            background: #0a7ae0;
+            border-radius: 10px;
+        }
+
+        /* Lightbox */
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.95);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        #lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .bg-glow {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Botões de Navegação */
+        .nav-btn {
+            background: white;
+            color: black;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border: none;
+            outline: none;
+        }
+
+        .nav-btn:hover {
+            background: #0a7ae0;
+            color: white;
+            transform: scale(1.15);
+        }
+
+        .nav-btn:active {
+            transform: scale(0.9);
+        }
+        .border.border-blue{ border-color: #0a7ae0;}
+        .text-gray-00.text-base{ font-size: 16px;
+                                font-weight: 0; }
+                                  /* Container Principal com o Gradiente */
+
+        .font-black.tracking-tighter.uppercase.leading-none{ transform: translateX(105px);}
+        .animated-bg {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Definimos um gradiente bem largo para que a animação possa "correr" por ele */
+            background: linear-gradient(-45deg, #000a14, #051928, #051928, #0a7ae0);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+
+        /* Definição da Animação do Gradiente */
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .text-cobalto.sectitle.font-bold{transform: translateX(-25px) translateY(-100px);
+                        font-size: 46px;
+                        letter-spacing: 0px;
+                        font-weight: 1000;
+                        text-align: center;
+                        display: inline-block;}
+                        .text-shine {
+            background: linear-gradient(to right, #0a7ae0, #6cbaf4 10%, #0a7ae0 20%); 
+            background-position: 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s infinite linear;
+            background-size: 200% auto;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+   <header>
+        <nav class="topnav">
+            <!-- Logo -->
+            <a class="menu-logo" href="index.html">
+                <img src="logo/logover3.png" alt="Logo" id="logover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none; color: white; font-weight: bold; font-size: 24px;">LOGO</span>
+            </a>
+
+            <!-- Icone Mobile -->
+            <div class="mobile-menu-icon" id="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navegação -->
+            <ul class="menu" id="nav-menu">
+                <li><a class="menu-link" href="index.html">Home</a></li>
+                
+                <li class="dropdown">
+                    <button class="dropbtn menu-link"><a href="projetos.html">Projetos</a></button>
+                    <div class="dropdown-content">
+                        <a href="miv.html">Indentidade Visual</a>
+                        <a href="videos.html">Vídeo</a>
+                        <a href="animations.html">Animação</a>
+                        <a href="socialmed.html">Social Media</a>
+                    </div>
+                </li>
+
+                <li><a class="menu-link" href="sobre.html">Sobre</a></li>
+                <li><a href="contatos.html" class="menu-linkc">Contatos</a></li>
+            </ul>
+        </nav>
+    </header><hr>
+
+   
+
+    <script>
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fecha o menu ao clicar em um link (exceto o botão de dropdown no mobile se quiser)
+        document.querySelectorAll('.menu-link:not(.dropbtn), .dropdown-content a, .menu-linkc').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+    <!-- Hero -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden px-8 animated-bg">
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <h2 class="font-black text-outline select-none whitespace-nowrap uppercase">ALLIANCE</h2>
+        </div>
+
+        <div class="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="lg:col-span-5 load-hidden space-y-8">
+                <div class="flex items-center gap-4">
+                    <span class="w-10 h-[2px] bg-cobalto"></span>
+                    <span class="text-cobalto sectitle font-bold text-shine uppercase tracking-[0.3em] text-[10px]">Identidade</span> <span class="text-cobalto sectitle font-bold text-shine uppercase tracking-[0.3em] text-[10px]">Visual</span>
+                </div>
+                <h2 class="text-7xl md:text-8xl font-black leading-none tracking-tighter">
+                    AL<span class="text-cobalto">LI</span>ANCE
+                </h2>
+                <p class="text-gray-00 text-base md:text-lg leading-relaxed max-w-sm font-light" id="font-lblue">
+                    Uma identidade visual de uma loja de produtos esportivos que te une em matrimônio ao esporte.
+                </p>
+                <button onclick="openLightbox('img/Capa.jpg')" class="group flex items-center gap-4 text-xs font-bold uppercase tracking-widest">
+                    <span>Explorar Detalhes</span>
+                    <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-cobalto group-hover:border-cobalto transition-all" >
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </div>
+                </button>
+            </div>
+
+            <div class="lg:col-span-7 lg:pl-10 load-hidden">
+                <div class="relative overflow-hidden rounded-2xl group shadow-2xl cursor-pointer" onclick="openLightbox('img/capa.jpg')">
+                    <img src="img/capa.jpg" alt="Alliance Project" class="w-full h-[500px] md:h-[650px] object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-12">
+                        <h3 class="text-3xl font-black">ALLIANCE BRANDING</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrossel -->
+    <section class="bg-white text-black py-32 relative z-20">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div>
+                    <a href="#project"><h2 class="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none">Projetos</h2></a>
+                </div>
+                <div class="text-2xl font-black tracking-tighter" id="font-blue">
+                    <span id="slide-num" class="text-cobalto">01</span> / <span class="text-gray-300">04</span>
+                </div>
+            </div>
+
+            <div class="relative max-w-[1100px] mx-auto">
+                <div class="slider-container shadow-2xl">
+                    <!-- Slide 1 -->
+                    <div class="slide active" onclick="openLightbox('https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1200')">
+                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover">
+                        <div class="absolute bottom-10 left-10 text-white pointer-events-none slide-content">
+                            <h4 class="text-3xl font-black uppercase">Projeto 1</h4>
+                            <p class="text-sm opacity-70 tracking-widest uppercase">Branding</p>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide" onclick="openLightbox('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&q=80&w=1200')">
+                        <img src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover">
+                        <div class="absolute bottom-10 left-10 text-white pointer-events-none slide-content">
+                            <h4 class="text-3xl font-black uppercase">Projeto 2</h4>
+                            <p class="text-sm opacity-70 tracking-widest uppercase">Branding</p>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide" onclick="openLightbox('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=1200')">
+                        <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover">
+                        <div class="absolute bottom-10 left-10 text-white pointer-events-none slide-content">
+                            <h4 class="text-3xl font-black uppercase">Projeto 3</h4>
+                            <p class="text-sm opacity-70 tracking-widest uppercase">Branding</p>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="slide" onclick="openLightbox('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1200')">
+                        <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover">
+                        <div class="absolute bottom-10 left-10 text-white pointer-events-none slide-content">
+                            <h4 class="text-3xl font-black uppercase">Projeto 4</h4>
+                            <p class="text-sm opacity-70 tracking-widest uppercase">Branding</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botões de Navegação -->
+                <div class="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2 z-30">
+                    <button onclick="changeSlide(-1)" class="nav-btn" aria-label="Slide anterior">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                </div>
+                <div class="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 z-30">
+                    <button onclick="changeSlide(1)" class="nav-btn" aria-label="Próximo slide">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dots -->
+            <div class="mt-12 flex justify-center items-center gap-3">
+                <div class="dot active" onclick="jumpToSlide(0)"></div>
+                <div class="dot" onclick="jumpToSlide(1)"></div>
+                <div class="dot" onclick="jumpToSlide(2)"></div>
+                <div class="dot" onclick="jumpToSlide(3)"></div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Footer / Contato -->
+    <footer id="contato" class="py-20 bg-black border-t border-white/5">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black mb-8" id="font-white">VAMOS CRIAR ALGO <span class="text-cobalt" id="font-blue">EXTRAORDINÁRIO?</span></h2>
+            <div class="flex flex-col items-center gap-6 mb-12">
+                <p class="text-gray-400">Entre em contato para orçamentos e parcerias.</p>
+                <div class="flex gap-8 text-2xl">
+                    <a href="https://www.behance.net/aisuyamiblack/appreciated" class="hover:text-cobalt transition">
+                        <i class="fab fa-behance"></i></a>
+                    <a href="https://www.instagram.com/kauanpdesign/?utm_source=ig_web_button_share_sheet" class="hover:text-cobalt transition">
+                        <i class="fab fa-instagram"></i></a>
+                    <a href="https://br.linkedin.com/in/kauan-pires-9a70952b2?trk=people-guest_people_search-card" class="hover:text-cobalt transition">
+                        <i class="fab fa-linkedin-in"></i></a>
+                    
+                </div>
+                <a href="mailto:contato@kpdesign.com" class="text-xl font-bold border-b-2 border-cobalt pb-1 hover:text-cobalt transition" id="font-white">kauanpb.pro@gmail.com</a>
+            </div>
+            <div class="text-xs text-gray-600 uppercase tracking-widest" id="font-white">
+                © 2026 KP DESIGN - TODOS OS DIREITOS RESERVADOS.
+            </div>
+        </div>
+    </footer>
+<script>
+        // Função simples para simular carregamento suave ou interações futuras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <!-- Lightbox -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <button class="absolute top-8 right-8 text-white text-4xl font-thin">&times;</button>
+        <img id="lightbox-img" src="" alt="Ampliado" class="max-w-[90%] max-h-[85vh] rounded-lg shadow-2xl object-contain">
+    </div>
+
+    <script>
+        ScrollReveal().reveal('.load-hidden', {
+            delay: 200,
+            distance: '30px',
+            origin: 'bottom',
+            duration: 1200,
+            interval: 150,
+            opacity: 0,
+            easing: 'cubic-bezier(0.16, 1, 0.3, 1)'
+        });
+
+        let currentIdx = 0;
+        let isAnimating = false;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const numLabel = document.getElementById('slide-num');
+
+        function updateSlider() {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentIdx);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIdx);
+            });
+            
+            const displayNum = currentIdx + 1;
+            numLabel.innerText = displayNum < 10 ? '0' + displayNum : displayNum;
+            
+            // Impede cliques múltiplos rápidos que causam bugs visuais
+            isAnimating = true;
+            setTimeout(() => isAnimating = false, 600);
+        }
+
+        function changeSlide(dir) {
+            if (isAnimating) return;
+            currentIdx += dir;
+            if (currentIdx < 0) currentIdx = slides.length - 1;
+            if (currentIdx >= slides.length) currentIdx = 0;
+            updateSlider();
+        }
+
+        function jumpToSlide(idx) {
+            if (isAnimating || currentIdx === idx) return;
+            currentIdx = idx;
+            updateSlider();
+        }
+
+        function openLightbox(url) {
+            const lb = document.getElementById('lightbox');
+            document.getElementById('lightbox-img').src = url;
+            lb.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                lb.classList.add('active');
+            }, 10);
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.classList.remove('active');
+            setTimeout(() => {
+                lb.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        const glow = document.querySelector('.bg-glow');
+        document.addEventListener('mousemove', e => {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            glow.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(0, 71, 171, 0.05) 0%, transparent 60%)`;
+        });
+    </script>
+
+</body>
+</html>

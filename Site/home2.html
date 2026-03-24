@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>KPDesign - Home</title>
+	<link rel="stylesheet" type="text/css" href="css/style1.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+	<script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html{scroll-behavior: smooth;}
+            /* Estilos para a animação da Lightbox */
+        #lightbox-overlay {
+            transition: opacity 0.3s ease-in-out;
+            display: none;
+        }
+        #lightbox-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-img {
+            transform: scale(0.9);
+            transition: transform 0.3s ease-in-out;
+        }
+        #lightbox-overlay.active .lightbox-img {
+            transform: scale(1);
+            transform: translateY(30px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000a14;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container-principal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            gap: 40px;
+            padding: 40px 10%;
+            flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+        }
+
+        .bloco-texto {
+            flex: 1;
+            min-width: 300px;
+            color: white;
+            z-index: 2;
+            margin-left: 10%;
+            transform: translateY(30px);
+        }
+
+        .title {
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .criatividade {
+            font-size: clamp(40px, 8vw, 90px); /* Fonte fluida */
+            display: block;
+            line-height: 85px;
+        }
+
+        .movimento {
+            font-size: clamp(40px, 7vw, 90px);
+            color: transparent;
+            -webkit-text-stroke: 1px #e2e8f0;
+            display: block;
+            margin-top: 5px;
+            line-height: 85px;
+        }
+
+        .text1 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 40px;
+            max-width: 500px;
+            line-height: 1.6;
+            transform: translateX(100px) translateY(10px);
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 75px;
+            list-style: none;
+            flex-wrap: wrap;
+            transform: translateX(150px);
+        }
+
+        .cta-link {
+            display: inline-block;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .cta-link.um {
+            color: #e2e8f0;
+            background-color: #0a7ae0;
+        }
+
+        .cta-link.um:hover {
+            background: linear-gradient(90deg, #e2e8f0, #b0e3ff);
+            color: #051928;
+            
+        }
+
+        .cta-link.dois {
+            color: #051928;
+            background-color: #e2e8f0;
+        }
+
+        .cta-link.dois:hover {
+            transform: scale(1.1);
+        }
+
+        .bloco-imagem {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .foto {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .foto:hover {
+            transform: scale(1.02);
+        }
+        /* --- MEDIA QUERIES --- */
+
+        /* Tablets e Celulares */
+        @media (max-width: 992px) {
+            .container-principal {
+                flex-direction: column-reverse; /* Imagem em cima ou baixo conforme preferir */
+                text-align: center;
+                padding: 60px 5%;
+            }
+
+
+            .bloco-texto {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .criatividade {
+           font-size: 45px;
+           transform: translateX(-40px) translateY(20px); 
+        }
+
+        .movimento {
+            font-size: 45px;
+            margin-top: 0px;
+            transform: translateX(-40px) translateY(-10px);
+           
+        }
+
+            .text1 {
+                margin-left: 5%;
+                margin-right: 10%;
+                float: left;
+                font-size: 15px;
+                transform: translateY(-5px) translateX(-30px);
+            }
+
+            .cta-container {
+                justify-content: center;
+                font-size: 15px;
+                gap: 40px;
+            }
+            .cta-link {
+            
+            padding: 10px 20px;
+            font-size: 15px;
+            transform: translateX(-175px);
+  
+        }
+
+        .cta-link.dois:hover{transform: translateX(-175px);
+        }
+
+        /* Celulares Pequenos */
+        @media (max-width: 480px) {
+            .cta-container {
+                flex-direction: column;
+                width: 100%;
+                .cta-container:hover{
+                    margin-left: 5%;
+                
+            }
+
+            }
+            
+            .cta-link {
+                width: 100%;
+
+            }
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+	<header>
+        <nav class="topnav">
+            <!-- Logo -->
+            <a class="menu-logo" href="index.html">
+                <img src="logo/logover3.png" alt="Logo" id="logover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none; color: white; font-weight: bold; font-size: 24px;">LOGO</span>
+            </a>
+
+            <!-- Icone Mobile -->
+            <div class="mobile-menu-icon" id="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navegação -->
+            <ul class="menu" id="nav-menu">
+                <li><a class="menu-link" href="index.html">Home</a></li>
+                
+                <li class="dropdown">
+                    <button class="dropbtn menu-link"><a href="projetos.html">Projetos<a></button>
+                    <div class="dropdown-content">
+                        <a href="miv.html">Identidade Visual</a>
+                        <a href="videos.html">Vídeo</a>
+                        <a href="animations.html">Animação</a>
+                        <a href="socialmed.html">Social Media</a>
+                    </div>
+                </li>
+
+                <li><a class="menu-link" href="sobre.html">Sobre</a></li>
+                <li><a href="contatos.html" class="menu-linkc">Contatos</a></li>
+            </ul>
+        </nav>
+    </header><hr>
+
+   
+
+    <script>
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fecha o menu ao clicar em um link (exceto o botão de dropdown no mobile se quiser)
+        document.querySelectorAll('.menu-link:not(.dropbtn), .dropdown-content a, .menu-linkc').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+	<main>
+
+<div class="container-principal">
+        
+        <div class="bloco-texto">
+            <div class="title">
+                <h1 class="criatividade">CRIATIVIDADE</h1>
+                <span class="movimento">E MOVIMENTO</span>
+            </div>
+            
+            <div class="text1">
+                <p>Está pronto? Pois vamos juntos dar vida as suas ideias e projetos, já que a arte e os sonhos são incríveis demais para ficar só na nossa cabeça.</p>
+            </div>
+            
+            <ul class="cta-container">
+                <li><a href="projetos.html" class="cta-link um">Ver projetos</a></li>
+                <li><a href="contatos.html" class="cta-link dois">Vamos criar!</a></li>
+            </ul>
+        </div>
+
+        <div class="bloco-imagem">
+            <a href="sobre.html">
+                <!-- Placeholder para a imagem original img/eu5.png -->
+                <img class="foto" src="img/eu5.png" alt="Sua Foto">
+            </a>
+        </div>
+
+    </div>
+
+
+ <!-- Hero Section -->
+   
+
+    <!-- Seção Identidade Visual -->
+    <section id="identidade" class="py-24 bg-white text-black">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <h3 class="text-cobalt font-bold mb-2 uppercase tracking-widest">Branding</h3>
+                    <a href="miv.html"><h2 class="text-4xl font-black">IDENTIDADE VISUAL</h2></a>
+                </div>
+                <p class="text-gray-600 max-w-md mt-4 md:mt-0">Marcas sólidas que comunicam valores e se destacam no mercado.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="group relative overflow-hidden bg-gray-100 h-80 flex items-center justify-center rounded-xl">
+                    <span class="text-gray-300 font-bold italic"><a href="miv.html"><img src="img/Capa.jpg" alt="alliance"></a></span>
+                    <div class="absolute inset-0 bg-cobalt/90 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-center items-center text-white p-8">
+                    <a href="miv.html"><p class="text-center text-sm"><i class="fas fa-play text-4xl text-white group-hover:text-cobalt transition-colors"></i></p></a>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden bg-gray-100 h-80 flex items-center justify-center rounded-xl">
+                    <img src="logo/logover1.png" alt="alliance">
+                    <div class="absolute inset-0 bg-cobalt/90 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-center items-center text-white p-8">
+                        
+                        <a href="miv.html" href="#project" ><p class="text-center text-sm"><i class="fas fa-play text-4xl text-white group-hover:text-cobalt transition-colors"></i></p></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Vídeos e Animação -->
+    <section id="videos" class="py-24 bg-black">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-cobalt font-bold mb-2 uppercase tracking-widest">Motion Graphics</h3>
+                <h2 class="text-4xl font-black" id="font-white">VÍDEOS E ANIMAÇÕES</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Vídeo 1 -->
+
+                <div class="aspect-video bg-zinc-900 border border-white/10 rounded-lg flex items-center justify-center flex-col relative group cursor-pointer overflow-hidden">
+                    <i class="fas fa-play text-4xl text-white group-hover:text-cobalt transition-colors"></i>
+                    <p class="mt-4 text-xs text-gray-500 uppercase">Ver Animação 2D</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-cobalt transform scale-x-0 group-hover:scale-x-100 transition-transform"></div>
+                </div>
+
+
+                <div class="video-card group relative aspect-video bg-zinc-900 border border-white/10 rounded-lg overflow-hidden cursor-pointer" onclick="openVideoModal('video/mddvid.mp4')">
+                <video class="w-full h-full object-cover opacity-40 group-hover:opacity-100 transition-opacity duration-500" muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                    <source src="video/mddvid.mp4" type="video/mp4">
+                </video>
+                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:bg-black/40 transition-all">
+                    
+                    <img src="img/imagem.jpg" alt="capavid">
+                </div>
+                <div class="absolute bottom-0 left-0 w-full h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></div>
+                <i class="fas fa-play text-4xl text-white group-hover:scale-125 group-hover:text-blue-500 transition-all duration-300"></i>
+            </div> <!-- Modal de Vídeo (Oculto por padrão) -->
+    <div id="videoModal" class="fixed inset-0 z-[999] hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-10" onclick="closeVideoModal()">
+        <!-- Container do Vídeo Expandido -->
+        <div class="relative w-full max-w-5xl aspect-video bg-black shadow-2xl rounded-lg overflow-hidden border border-white/20" onclick="event.stopPropagation()">
+            
+            <!-- Botão de fechar customizado -->
+            <button class="absolute top-4 right-4 z-[1000] bg-black/50 hover:bg-white hover:text-black text-white w-10 h-10 rounded-full flex items-center justify-center transition-all" onclick="closeVideoModal()">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Player de Vídeo -->
+            <video id="modalVideoPlayer" controls class="w-full h-full shadow-inner">
+                <source src="" type="video/mp4">
+                Seu navegador não suporta este vídeo.
+            </video>
+        </div>
+    </div>
+
+
+                <!-- Vídeo 3 -->
+                <div id="animacao" class="aspect-video bg-zinc-900 border border-white/10 rounded-lg flex items-center justify-center flex-col relative group cursor-pointer overflow-hidden">
+                    <i class="fas fa-play text-4xl text-white group-hover:text-cobalt transition-colors"></i>
+                    <p class="mt-4 text-xs text-gray-500 uppercase">Motion Poster</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-cobalt transform scale-x-0 group-hover:scale-x-100 transition-transform"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Posts / Social Media -->
+    <section id="posts" class="py-24 bg-zinc-950">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl font-black uppercase" id="font-white">Social Media <span class="text-cobalt" id="font-blue">Posts</span></h2>
+                <div class="h-[2px] flex-grow mx-8 bg-white/10 hidden md:block"></div>
+                <button class="text-sm font-bold uppercase tracking-widest hover:text-cobalt transition" id="font-white">Ver Behance</button>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Item 1 -->
+                <div class="aspect-square bg-zinc-900 rounded-lg overflow-hidden relative group cursor-pointer lightbox-trigger">
+                    <div class="w-full h-full flex items-center justify-center text-zinc-700 italic">
+                        <img src="img/post1.jpg" alt="Post 1" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/600x600?text=Post+1'">
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <i class="fab fa-instagram text-2xl text-white"></i>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="aspect-square bg-zinc-900 rounded-lg overflow-hidden relative group cursor-pointer lightbox-trigger">
+                    <div class="w-full h-full flex items-center justify-center text-zinc-700 italic">
+                        <img src="img/post2.jpg" alt="Post 1" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/600x600?text=Post+1'">
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <i class="fab fa-instagram text-2xl text-white"></i>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="aspect-square bg-zinc-900 rounded-lg overflow-hidden relative group cursor-pointer lightbox-trigger">
+                    <div class="w-full h-full flex items-center justify-center text-zinc-700 italic">
+                        <img src="img/post3.jpg" alt="Post 1" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/600x600?text=Post+1'">
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <i class="fab fa-instagram text-2xl text-white"></i>
+                    </div>
+                </div>
+                <!-- Item 1 -->
+                <div class="aspect-square bg-zinc-900 rounded-lg overflow-hidden relative group cursor-pointer lightbox-trigger">
+                    <div class="w-full h-full flex items-center justify-center text-zinc-700 italic">
+                        <img src="img/post1.jpg" alt="Post 1" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/600x600?text=Post+1'">
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <i class="fab fa-instagram text-2xl text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- Estrutura da Lightbox (Invisível por padrão) -->
+    <div id="lightbox-overlay" class="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 md:p-12 cursor-zoom-out">
+        <!-- Botão Fechar -->
+        <button id="close-lightbox" class="absolute top-6 right-6 text-white text-4xl hover:text-blue-500 transition-colors">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <!-- Imagem Expandida -->
+        <img id="lightbox-content" src="" alt="Expanded View" class="lightbox-img max-w-full max-h-full rounded-lg shadow-2xl cursor-default">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const triggers = document.querySelectorAll('.lightbox-trigger');
+            const overlay = document.getElementById('lightbox-overlay');
+            const content = document.getElementById('lightbox-content');
+            const closeBtn = document.getElementById('close-lightbox');
+
+            // Abrir Lightbox
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const imgSrc = trigger.querySelector('img').src;
+                    content.src = imgSrc;
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Trava o scroll do fundo
+                });
+            });
+
+            // Fechar Lightbox
+            const closeLightbox = () => {
+                overlay.classList.remove('active');
+                document.body.style.overflow = ''; // Destrava o scroll
+                setTimeout(() => { content.src = ""; }, 300); // Limpa o src após a animação
+            };
+
+            closeBtn.addEventListener('click', closeLightbox);
+            
+            // Fechar ao clicar no fundo escuro
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    closeLightbox();
+                }
+            });
+
+            // Fechar com a tecla ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && overlay.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
+
+	</main>
+
+
+	<!-- Footer / Contato -->
+    <footer id="contato" class="py-20 bg-black border-t border-white/5">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black mb-8" id="font-white">VAMOS CRIAR ALGO <span class="text-cobalt" id="font-blue">EXTRAORDINÁRIO?</span></h2>
+            <div class="flex flex-col items-center gap-6 mb-12">
+                <p class="text-gray-400">Entre em contato para orçamentos e parcerias.</p>
+                <div class="flex gap-8 text-2xl">
+                    <a href="https://www.behance.net/aisuyamiblack/appreciated" class="hover:text-cobalt transition"><i class="fab fa-behance"></i></a>
+                    <a href="https://www.instagram.com/kauanpdesign/?utm_source=ig_web_button_share_sheet" class="hover:text-cobalt transition"><i class="fab fa-instagram"></i></a>
+                    <a href="https://br.linkedin.com/in/kauan-pires-9a70952b2?trk=people-guest_people_search-card" class="hover:text-cobalt transition"><i class="fab fa-linkedin-in"></i></a>
+                    
+                </div>
+                <a href="mailto:contato@kpdesign.com" class="text-xl font-bold border-b-2 border-cobalt pb-1 hover:text-cobalt transition" id="font-white">kauanpb.pro@gmail.com</a>
+            </div>
+            <div class="text-xs text-gray-600 uppercase tracking-widest" id="font-white">
+                © 2026 KP DESIGN - TODOS OS DIREITOS RESERVADOS.
+            </div>
+        </div>
+    </footer>
+<script>
+        // Função simples para simular carregamento suave ou interações futuras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script>
+    /**
+     * Abre o modal, carrega o vídeo selecionado e inicia a reprodução.
+     * @param {string} videoSrc - O caminho do arquivo de vídeo.
+     */
+    function openVideoModal(videoSrc) {
+        const modal = document.getElementById('videoModal');
+        const player = document.getElementById('modalVideoPlayer');
+        
+        // Atribui a fonte e carrega o vídeo
+        player.src = videoSrc;
+        player.load();
+        
+        // Exibe o modal
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        
+        // Tenta dar play automaticamente
+        player.play().catch(error => {
+            console.log("Autoplay bloqueado pelo navegador, aguardando interação.");
+        });
+    }
+
+    /**
+     * Fecha o modal, pausa o vídeo e limpa a fonte para economizar recursos.
+     */
+    function closeVideoModal() {
+        const modal = document.getElementById('videoModal');
+        const player = document.getElementById('modalVideoPlayer');
+        
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        
+        player.pause();
+        player.src = ""; // Limpa para resetar o buffer
+    }
+
+    // Fechar modal ao apertar a tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeVideoModal();
+    });
+</script>
+</body>
+</html>

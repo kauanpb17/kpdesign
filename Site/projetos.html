@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>KPDesign - Home</title>
+	<link rel="stylesheet" type="text/css" href="css/style1.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+	<script src="https://cdn.tailwindcss.com"></script>
+    <style>
+               :root {
+            --cobalt-blue: #0047AB;
+        }
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+
+
+        }
+        body{padding-top: 0px;}
+        .bg-cobalt { background-color: var(--cobalt-blue); }
+        .text-cobalt { color: var(--cobalt-blue); }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background-color: #0a7ae0;
+        }
+
+        .project-img-container {
+            transition: transform 0.5s ease;
+        }
+        .project-img-container:hover {
+            transform: scale(1.02);
+        }
+        .bg-gray-50.bgdark{background-color: #000a14;
+            padding-top: 120px;}
+        .text-lg.textglass{color: #e2e8f0;
+        }
+        .bg-cobalt.text-white.bgblue{background: #0a7ae0}
+        .font-black.mt-2.section-title.gapc{transform: translateX(10px);}
+
+
+        .text-shine {
+            background: linear-gradient(to right, #0a7ae0 0, #b0e3ff 10%, #0a7ae0 20%);
+            background-position: 0;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s infinite linear;
+            background-size: 200% auto;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+         /* Estilos para a animação da Lightbox */
+        #lightbox-overlay {
+            transition: opacity 0.3s ease-in-out;
+            display: none;
+        }
+        #lightbox-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .lightbox-img {
+            transform: scale(0.9);
+            transition: transform 0.3s ease-in-out;
+        }
+        #lightbox-overlay.active .lightbox-img {
+            transform: scale(1);
+            transform: translateY(30px);
+        }
+        .w-full.h-full.flex.items-center{box-shadow: 20px;}
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="topnav">
+            <!-- Logo -->
+            <a class="menu-logo" href="index.html">
+                <img src="logo/logover3.png" alt="Logo" id="logover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none; color: white; font-weight: bold; font-size: 24px;">LOGO</span>
+            </a>
+
+            <!-- Icone Mobile -->
+            <div class="mobile-menu-icon" id="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navegação -->
+            <ul class="menu" id="nav-menu">
+                <li><a class="menu-link" href="index.html">Home</a></li>
+                
+                <li class="dropdown">
+                    <button class="dropbtn menu-link"><a href="projetos.html">Projetos</a></button>
+                    <div class="dropdown-content">
+                        <a href="miv.html">Indentidade Visual</a>
+                        <a href="videos.html">Vídeo</a>
+                        <a href="animations.html">Animação</a>
+                        <a href="socialmed.html">Social Media</a>
+                    </div>
+                </li>
+
+                <li><a class="menu-link" href="sobre.html">Sobre</a></li>
+                <li><a href="contatos.html" class="menu-linkc">Contatos</a></li>
+            </ul>
+        </nav>
+    </header><hr>
+
+   
+
+    <script>
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fecha o menu ao clicar em um link (exceto o botão de dropdown no mobile se quiser)
+        document.querySelectorAll('.menu-link:not(.dropbtn), .dropdown-content a, .menu-linkc').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+    <main>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 text-center bg-gray-50 bgdark">
+        <h1 class="text-5xl md:text-7xl font-black mb-6 uppercase tracking-tighter text-shine" id="font-white">MEUS<span id="font-blue">PROJETOS</span></h1>
+        <p class="text-gray-300 max-w-2xl mx-auto text-lg md:text-xl textglass">Uma seleção curada de trabalhos que unem estética minimalista e impacto visual.</p>
+        <div class="mt-10 animate-bounce text-cobalt text-2xl">
+            <i class="fas fa-paint-brush" id="font-blue"></i>
+        </div>
+    </section>
+
+    <!-- 1. Identidade Visual -->
+    <section id="identidade" class="py-24 px-6 md:px-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <span class="text-cobalt font-bold tracking-widest uppercase text-sm " id="font-blue">01. Branding</span>
+                    <h2 class="text-4xl md:text-5xl font-black mt-2 section-title gapc">Identidade Visual</h2>
+                </div>
+                <p class="text-gray-500 max-w-md">Criação de marcas sólidas, logotipos e manuais de identidade que comunicam a essência do negócio.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="md:col-span-2 bg-gray-100 rounded-3xl aspect-video project-img-container flex items-center justify-center text-gray-400 font-bold">
+                   <a href="miv.html"><img src="img/Capa.jpg" alt="alliance"></a>
+                </div>
+                <div class="bg-black rounded-3xl aspect-square md:aspect-auto project-img-container flex items-center justify-center text-gray-600 font-bold">
+                    [Detalhe de Papelaria/Logo]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Vídeo (Background Negro) -->
+    <section id="video" class="py-24 px-6 md:px-20 bg-black text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row-reverse justify-between items-end mb-12 gap-6 text-right md:text-left">
+                <div class="md:text-right">
+                    <span class="text-cobalt font-bold tracking-widest uppercase text-sm" id="font-blue">02. Audiovisual</span>
+                    <h2 class="text-4xl md:text-5xl font-black mt-2 section-title">Vídeo Profissional</h2>
+                </div>
+                <p class="text-gray-400 max-w-md md:text-right">Edição e direção de arte para vídeos comerciais, institucionais e conteúdos cinematográficos.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Fashion Film 2024 -->
+            <div class="group relative bg-gray-900 rounded-3xl aspect-video overflow-hidden border border-gray-800 cursor-pointer transition-all duration-500 hover:border-blue-600/50 shadow-lg" 
+                 onclick="openVideoModal('video/mddvid.mp4')">
+                <video class="w-full h-full object-cover opacity-30 group-hover:opacity-100 transition-opacity duration-700" muted loop onmouseover="this.play()" onmouseout="this.pause(); this.currentTime=0;">
+                    <source src="video/mddvid.mp4" type="video/mp4">
+                </video>
+                
+                <div class="absolute inset-0 flex flex-col items-center justify-center group-hover:bg-black/20 transition-all">
+                    
+                    <span class="text-gray-500 group-hover:text-white uppercase tracking-widest text-xs transition-colors"><img src="img/imagem.jpg" alt="capa video"></span>
+                </div>
+            </div>
+                <div class="bg-gray-900 rounded-3xl aspect-video project-img-container flex flex-col items-center justify-center border border-gray-800">
+                    <i class="fas fa-play text-cobalt text-4xl mb-4" id="font-blue"></i>
+                    <span class="text-gray-500 uppercase tracking-widest text-xs">Comercial de Produto</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Animação (Background Azul Cobalto) -->
+    <section id="animacao" class="py-24 px-6 md:px-20 bg-cobalt text-white bgblue">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <span class="text-white/70 font-bold tracking-widest uppercase text-sm" id="font-dblue">03. Motion Graphics</span>
+                    <h2 class="text-4xl md:text-5xl font-black mt-2">Animação</h2>
+                </div>
+                <p class="text-blue-100 max-w-md" id="font-dblue">Dando vida a elementos estáticos através de movimento fluido e storytelling visual dinâmico.</p>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-sm rounded-[3rem] p-4 border border-white/20">
+                <div class="bg-white rounded-[2.5rem] aspect-[21/9] flex items-center justify-center text-cobalt font-black text-2xl uppercase">
+                    Animação
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Único de Vídeo (Certifique-se de que este bloco e o script abaixo existam apenas uma vez no seu arquivo final) -->
+<div id="videoModal" class="fixed inset-0 z-[999] hidden items-center justify-center bg-black/90 backdrop-blur-md p-4" onclick="closeVideoModal()">
+    <div class="relative w-full max-w-6xl aspect-video bg-black shadow-2xl rounded-2xl overflow-hidden border border-white/10" onclick="event.stopPropagation()">
+        <button class="absolute top-6 right-6 z-[1000] bg-white/10 hover:bg-white hover:text-black text-white w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-xl" onclick="closeVideoModal()">
+            <i class="fas fa-times text-xl"></i>
+        </button>
+        <video id="modalVideoPlayer" controls class="w-full h-full">
+            <source src="" type="video/mp4">
+            Seu navegador não suporta este vídeo.
+        </video>
+    </div>
+</div>
+<script>
+    function openVideoModal(videoSrc) {
+        const modal = document.getElementById('videoModal');
+        const player = document.getElementById('modalVideoPlayer');
+        if (modal && player) {
+            player.src = videoSrc;
+            player.load();
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            player.muted = false;
+            player.play().catch(e => console.log("Play aguardando interação."));
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeVideoModal() {
+        const modal = document.getElementById('videoModal');
+        const player = document.getElementById('modalVideoPlayer');
+        if (modal && player) {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            player.pause();
+            player.src = "";
+            document.body.style.overflow = '';
+        }
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeVideoModal();
+    });
+</script>
+
+    <!-- 4. Social Media -->
+    <section id="social" class="py-24 px-6 md:px-20">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-cobalt font-bold tracking-widest uppercase text-sm" id="font-blue">04. Presença Digital</span>
+                <h2 class="text-4xl md:text-5xl font-black mt-2">Social Media</h2>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <!-- Item 1 -->
+                <div class="aspect-square bg-zinc-900 rounded-lg overflow-hidden relative group cursor-pointer lightbox-trigger">
+                    <div class="w-full h-full flex items-center justify-center text-zinc-700 italic">
+                        <img src="img/post1.jpg" alt="Post 1" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/600x600?text=Post+1'">
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <i class="fab fa-instagram text-2xl text-white"></i>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="aspect-square bg-zinc-900 rounded-lg overflow-hidden relative group cursor-pointer lightbox-trigger">
+                    <div class="w-full h-full flex items-center justify-center text-zinc-700 italic">
+                        <img src="img/post2.jpg" alt="Post 1" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/600x600?text=Post+1'">
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <i class="fab fa-instagram text-2xl text-white"></i>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="aspect-square bg-zinc-900 rounded-lg overflow-hidden relative group cursor-pointer lightbox-trigger">
+                    <div class="w-full h-full flex items-center justify-center text-zinc-700 italic">
+                        <img src="img/post3.jpg" alt="Post 1" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/600x600?text=Post+1'">
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <i class="fab fa-instagram text-2xl text-white"></i>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="aspect-square bg-zinc-900 rounded-lg overflow-hidden relative group cursor-pointer lightbox-trigger">
+                    <div class="w-full h-full flex items-center justify-center text-zinc-700 italic">
+                        <img src="img/post1.jpg" alt="Post 1" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/600x600?text=Post+1'">
+                    </div>
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+                        <i class="fab fa-instagram text-2xl text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Estrutura da Lightbox (Invisível por padrão) -->
+    <div id="lightbox-overlay" class="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 md:p-12 cursor-zoom-out">
+        <!-- Botão Fechar -->
+        <button id="close-lightbox" class="absolute top-6 right-6 text-white text-4xl hover:text-blue-500 transition-colors">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <!-- Imagem Expandida -->
+        <img id="lightbox-content" src="" alt="Expanded View" class="lightbox-img max-w-full max-h-full rounded-lg shadow-2xl cursor-default">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const triggers = document.querySelectorAll('.lightbox-trigger');
+            const overlay = document.getElementById('lightbox-overlay');
+            const content = document.getElementById('lightbox-content');
+            const closeBtn = document.getElementById('close-lightbox');
+
+            // Abrir Lightbox
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const imgSrc = trigger.querySelector('img').src;
+                    content.src = imgSrc;
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Trava o scroll do fundo
+                });
+            });
+
+            // Fechar Lightbox
+            const closeLightbox = () => {
+                overlay.classList.remove('active');
+                document.body.style.overflow = ''; // Destrava o scroll
+                setTimeout(() => { content.src = ""; }, 300); // Limpa o src após a animação
+            };
+
+            closeBtn.addEventListener('click', closeLightbox);
+            
+            // Fechar ao clicar no fundo escuro
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    closeLightbox();
+                }
+            });
+
+            // Fechar com a tecla ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && overlay.classList.contains('active')) {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
+
+
+    </main>
+
+
+	<!-- Footer / Contato -->
+    <footer id="contato" class="py-20 bg-black border-t border-white/5">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black mb-8" id="font-white">VAMOS CRIAR ALGO <span class="text-cobalt" id="font-blue">EXTRAORDINÁRIO?</span></h2>
+            <div class="flex flex-col items-center gap-6 mb-12">
+                <p class="text-gray-400">Entre em contato para orçamentos e parcerias.</p>
+                <div class="flex gap-8 text-2xl">
+                    <a href="https://www.behance.net/aisuyamiblack/appreciated" class="hover:text-cobalt transition"><i class="fab fa-behance"></i></a>
+                    <a href="https://www.instagram.com/kauanpdesign/?utm_source=ig_web_button_share_sheet" class="hover:text-cobalt transition"><i class="fab fa-instagram"></i></a>
+                    <a href="https://br.linkedin.com/in/kauan-pires-9a70952b2?trk=people-guest_people_search-card" class="hover:text-cobalt transition"><i class="fab fa-linkedin-in"></i></a>
+                    
+                </div>
+                <a href="mailto:contato@kpdesign.com" class="text-xl font-bold border-b-2 border-cobalt pb-1 hover:text-cobalt transition" id="font-white">kauanpb.pro@gmail.com</a>
+            </div>
+            <div class="text-xs text-gray-600 uppercase tracking-widest" id="font-white">
+                © 2026 KP DESIGN - TODOS OS DIREITOS RESERVADOS.
+            </div>
+        </div>
+    </footer>
+<script>
+        // Função simples para simular carregamento suave ou interações futuras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

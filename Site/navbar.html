@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>navbar</title>
+
+    <style>
+        /* Reset e Fontes */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            padding-top: 80px; /* Espaço para o header fixo */
+        }
+
+        /* Topnav Styles */
+        .topnav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Logo */
+        .menu-logo img {
+            width: 100px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        /* Menu List */
+        .menu {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        /* Links Gerais */
+        .menu-link, .dropbtn {
+            text-decoration: none;
+            color: #e2e8f0;
+            font-weight: 600;
+            position: relative;
+            padding: 8px 0;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            font-size: 16px;
+        }
+
+        /* Efeito de linha nos links */
+        .menu-link::after {
+            content: '';
+            height: 3px;
+            width: 0;
+            border-radius: 2px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, #0a7ae0, #369dea);
+            transition: width 0.3s ease-out;
+        }
+
+        .menu-link:hover:after {
+            width: 100%;
+        }
+
+        /* Link de Contato (Destaque) */
+        .menu-linkc {
+            text-decoration: none;
+            color: #0a7ae0;
+            font-weight: 600;
+            background-color: #e2e8f0;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .menu-linkc:hover {
+            background: linear-gradient(90deg, #0a7ae0, #369dea);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Dropdown Desktop */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%); /* Centraliza o dropdown em relação ao botão */
+            background-color: #e2e8f0;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .dropdown-content a {
+            color: #051928;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.2s;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #cbd5e1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Menu Mobile (Hamburguer) */
+        .mobile-menu-icon {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+
+        .mobile-menu-icon span {
+            width: 30px;
+            height: 3px;
+            background-color: #e2e8f0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Media Queries para Responsividade */
+        @media (max-width: 992px) {
+            .mobile-menu-icon {
+                display: flex;
+            }
+
+            .menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background-color: #0a0a0a;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 100px;
+                gap: 1rem;
+                transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+                box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+                border-left: 1px solid rgba(255,255,255,0.05);
+                overflow-y: auto; /* Permite scroll se o menu for longo */
+            }
+
+            .menu.active {
+                right: 0;
+            }
+
+            .menu li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .menu-link, .dropbtn {
+                font-size: 20px;
+                display: block;
+                width: 100%;
+                padding: 12px 0;
+            }
+
+            .menu-linkc {
+                margin: 20px auto;
+                display: inline-block;
+                font-size: 18px;
+            }
+
+            /* Dropdown no Mobile - Correção de Deslocamento */
+            .dropdown {
+                width: 100%;
+            }
+
+            .dropdown-content {
+                position: static; /* Remove o posicionamento absoluto que causa o bug */
+                display: block; 
+                transform: none; /* Remove a centralização de desktop */
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.05);
+                box-shadow: none;
+                margin-top: 0;
+                border-radius: 0;
+            }
+
+            .dropdown-content a {
+                color: #94a3b8;
+                text-align: center;
+                font-size: 16px;
+                padding: 15px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+            }
+
+            /* Transformação do ícone X */
+            .mobile-menu-icon.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 6px);
+            }
+            .mobile-menu-icon.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .mobile-menu-icon.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -7px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="topnav">
+            <!-- Logo -->
+            <a class="menu-logo" href="index.html">
+                <img src="logo/logover3.png" alt="Logo" id="logover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none; color: white; font-weight: bold; font-size: 24px;">LOGO</span>
+            </a>
+
+            <!-- Icone Mobile -->
+            <div class="mobile-menu-icon" id="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navegação -->
+            <ul class="menu" id="nav-menu">
+                <li><a class="menu-link" href="index.html">Home</a></li>
+                
+                <li class="dropdown">
+                    <button class="dropbtn menu-link">Projetos</button>
+                    <div class="dropdown-content">
+                        <a href="miv.html">Identidade Visual</a>
+                        <a href="videos.html">Vídeo</a>
+                        <a href="animations.html">Animação</a>
+                        <a href="socialmed.html">Social Media</a>
+                    </div>
+                </li>
+
+                <li><a class="menu-link" href="sobre.html">Sobre</a></li>
+                <li><a href="contatos.html" class="menu-linkc">Contatos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding: 50px; color: white; text-align: center;">
+        <h1>Conteúdo da Página</h1>
+        <p>O dropdown agora está fixo e centralizado dentro do menu lateral.</p>
+    </main>
+
+    <script>
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fecha o menu ao clicar em um link (exceto o botão de dropdown no mobile se quiser)
+        document.querySelectorAll('.menu-link:not(.dropbtn), .dropdown-content a, .menu-linkc').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+
+</body>
+</html>

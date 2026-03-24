@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sobre Mim</title>
+	<link rel="stylesheet" type="text/css" href="css/style1.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+	<script src="https://cdn.tailwindcss.com"></script>
+	 <style>
+        :root {
+            --cobalt-blue: #0047AB;
+        }
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            font-family: 'Inter', sans-serif;
+        }
+        .bg-cobalt { background-color: var(--cobalt-blue); }
+        .text-cobalt { color: var(--cobalt-blue); }
+        .border-cobalt { border-color: var(--cobalt-blue); }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 71, 171, 0.1);
+        }
+
+        .input-focus:focus {
+            outline: none;
+            border-color: var(--cobalt-blue);
+            ring: 2px;
+            ring-color: var(--cobalt-blue);
+        }
+
+        .fab.fa-whatsapp{color: #0a7ae0;}
+        .far.fa-envelope{color: #0a7ae0;}
+        .fab.fa-instagram.top{color: #0a7ae0;}
+        .fab.fa-linkedin-in.top{color: #0a7ae0;}
+        .fab.fa-behance.top{color: #0a7ae0;}
+
+        .bg-cobalt{background-color: #0a7ae0;}
+
+        .w-full.bg-gray-900.serv{
+        	padding-top: 15px;
+        	padding-bottom: 14px;
+        }
+        main{margin-top: 20px;}
+    </style>
+
+</head>
+
+
+
+<body>
+
+		<header>
+        <nav class="topnav">
+            <!-- Logo -->
+            <a class="menu-logo" href="index.html">
+                <img src="logo/logover3.png" alt="Logo" id="logover" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none; color: white; font-weight: bold; font-size: 24px;">LOGO</span>
+            </a>
+
+            <!-- Icone Mobile -->
+            <div class="mobile-menu-icon" id="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navegação -->
+            <ul class="menu" id="nav-menu">
+                <li><a class="menu-link" href="index.html">Home</a></li>
+                
+                <li class="dropdown">
+                    <button class="dropbtn menu-link"><a href="projetos.html">Projetos</a></button>
+                    <div class="dropdown-content">
+                        <a href="miv.html">Indentidade Visual</a>
+                        <a href="videos.html">Vídeo</a>
+                        <a href="animations.html">Animação</a>
+                        <a href="socialmed.html">Social Media</a>
+                    </div>
+                </li>
+
+                <li><a class="menu-link" href="sobre.html">Sobre</a></li>
+                <li><a href="contatos.html" class="menu-linkc">Contatos</a></li>
+            </ul>
+        </nav>
+    </header><hr>
+
+   
+
+    <script>
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fecha o menu ao clicar em um link (exceto o botão de dropdown no mobile se quiser)
+        document.querySelectorAll('.menu-link:not(.dropbtn), .dropdown-content a, .menu-linkc').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+ <main class="max-w-6xl mx-auto px-6 py-12 md:py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            
+            <!-- Coluna Esquerda: Informações e Redes -->
+            <div>
+                <h1 class="text-5xl font-extrabold mb-6 leading-tight">
+                    Vamos criar algo <span class="text-cobalt" id="font-blue">extraordinário</span> juntos.
+                </h1>
+                <p class="text-gray-600 text-lg mb-12">
+                    Estou disponível para novos projetos, colaborações ou até mesmo trocar uma ideia. Escolha o canal que preferir.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- WhatsApp -->
+                    <a href="#" class="contact-card flex items-center p-4 border rounded-xl border-gray-200">
+                        <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-cobalt text-xl mr-4">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">WhatsApp</p>
+                            <p class="font-semibold">(11) 97616-3840</p>
+                        </div>
+                    </a>
+
+                    <!-- Behance -->
+                    <a href="https://www.behance.net/kpdesignofc/appreciated" class="contact-card flex items-center p-4 border rounded-xl border-gray-200">
+                        <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-cobalt text-xl mr-4">
+                            <i class="fab fa-behance top"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Portfólio Behance</p>
+                            <p class="font-semibold">kpdesignofc</p>
+                        </div>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://br.linkedin.com/in/kauan-pires-9a70952b2?trk=people-guest_people_search-card" class="contact-card flex items-center p-4 border rounded-xl border-gray-200">
+                        <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-cobalt text-xl mr-4">
+                            <i class="fab fa-linkedin-in top"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">LinkedIn</p>
+                            <p class="font-semibold">Kauan Pires</p>
+                        </div>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/kauanpdesign/?utm_source=ig_web_button_share_sheet" class="contact-card flex items-center p-4 border rounded-xl border-gray-200">
+                        <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-cobalt text-xl mr-4">
+                            <i class="fab fa-instagram top"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">Instagram</p>
+                            <p class="font-semibold">kauanpdesign</p>
+                        </div>
+                    </a>
+
+                    <!-- E-mail -->
+                    <a href="mailto:kauanpb.pro@gmail.com" class="contact-card flex items-center p-4 border rounded-xl border-gray-200 col-span-1 sm:col-span-2">
+                        <div class="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center text-cobalt text-xl mr-4">
+                            <i class="far fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase font-bold">E-mail</p>
+                            <p class="font-semibold">kauanpb.pro@gmail.com</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- FAQ Section (Diferencial) -->
+                <div class="mt-16">
+                    <h3 class="text-xl font-bold mb-6">Dúvidas comuns</h3>
+                    <div class="space-y-4">
+                        <details class="group border-b border-gray-100 pb-4 cursor-pointer">
+                            <summary class="flex justify-between items-center font-medium list-none">
+                                <span>Qual o prazo médio de entrega?</span>
+                                <span class="transition group-open:rotate-180 text-cobalt">
+                                    <i class="fas fa-chevron-down"></i>
+                                </span>
+                            </summary>
+                            <p class="text-gray-500 mt-3 text-sm">Depende da complexidade, mas identidades visuais levam em média de 15 a 20 dias úteis.</p>
+                        </details>
+                        <details class="group border-b border-gray-100 pb-4 cursor-pointer">
+                            <summary class="flex justify-between items-center font-medium list-none">
+                                <span>Você trabalha com contratos?</span>
+                                <span class="transition group-open:rotate-180 text-cobalt">
+                                    <i class="fas fa-chevron-down"></i>
+                                </span>
+                            </summary>
+                            <p class="text-gray-500 mt-3 text-sm">Sim, todos os projetos são formalizados com contrato para segurança de ambas as partes.</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coluna Direita: Formulário -->
+            <div class="bg-black text-white p-8 md:p-12 rounded-3xl shadow-2xl">
+                <h2 class="text-3xl font-bold mb-2">Mande uma mensagem</h2>
+                <p class="text-gray-400 mb-8">Preencha o formulário abaixo e responderei em até 24h.</p>
+                
+                <form id="contactForm" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Nome Completo</label>
+                        <input type="text" placeholder="Como posso te chamar?" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-white focus:border-cobalt focus:ring-1 focus:ring-cobalt outline-none transition" required>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">E-mail</label>
+                            <input type="email" placeholder="seu@email.com" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-white focus:border-cobalt focus:ring-1 focus:ring-cobalt outline-none transition" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Serviço</label>
+                            <select class="w-full bg-gray-900 serv border border-gray-800 rounded-xl px-4 py-3 text-white focus:border-cobalt focus:ring-1 focus:ring-cobalt outline-none transition">
+                                <option>Identidade Visual</option>
+                                <option>Social Media</option>
+                                <option>Video/Animação</option>
+                                <option>Outros</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Sobre o seu projeto</label>
+                        <textarea rows="4" placeholder="Conte-me um pouco sobre sua ideia..." class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-white focus:border-cobalt focus:ring-1 focus:ring-cobalt outline-none transition" required></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-cobalt hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition duration-300 transform active:scale-95 flex items-center justify-center space-x-2">
+                        <span>Enviar Mensagem</span>
+                        <i class="fas fa-paper-plane text-sm"></i>
+                    </button>
+                </form>
+
+                <div id="successMessage" class="hidden mt-6 p-4 bg-green-900/30 border border-green-500/50 text-green-400 rounded-xl text-center">
+                    Mensagem enviada com sucesso! Logo entrarei em contato.
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('button');
+            const success = document.getElementById('successMessage');
+            
+            btn.innerHTML = 'Enviando...';
+            btn.disabled = true;
+
+            // Simulação de envio
+            setTimeout(() => {
+                this.classList.add('hidden');
+                success.classList.remove('hidden');
+            }, 1500);
+        });
+    </script>
+    <!-- Footer / Contato -->
+    <footer id="contato" class="py-20 bg-black border-t border-white/5">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-black mb-8" id="font-white">VAMOS CRIAR ALGO <span class="text-cobalt" id="font-blue">EXTRAORDINÁRIO?</span></h2>
+            <div class="flex flex-col items-center gap-6 mb-12">
+                <p class="text-gray-400">Entre em contato para orçamentos e parcerias.</p>
+                <div class="flex gap-8 text-2xl">
+                    <a href="https://www.behance.net/aisuyamiblack/appreciated" class="hover:text-cobalt transition"><i class="fab fa-behance"></i></a>
+                    <a href="https://www.instagram.com/kauanpdesign/?utm_source=ig_web_button_share_sheet" class="hover:text-cobalt transition"><i class="fab fa-instagram"></i></a>
+                    <a href="https://br.linkedin.com/in/kauan-pires-9a70952b2?trk=people-guest_people_search-card" class="hover:text-cobalt transition"><i class="fab fa-linkedin-in"></i></a>
+                    
+                </div>
+                <a href="mailto:contato@kpdesign.com" class="text-xl font-bold border-b-2 border-cobalt pb-1 hover:text-cobalt transition" id="font-white">kauanpb.pro@gmail.com</a>
+            </div>
+            <div class="text-xs text-gray-600 uppercase tracking-widest" id="font-white">
+                © 2026 KP DESIGN - TODOS OS DIREITOS RESERVADOS.
+            </div>
+        </div>
+    </footer>
+<script>
+        // Função simples para simular carregamento suave ou interações futuras
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
